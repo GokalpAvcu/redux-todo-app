@@ -1,7 +1,7 @@
 import React from "react";
 
-import { useSelector, useDispatch} from "react-redux"; // tanımlamış olduğum bir state'e erişim sağlayabilmek için useSelector kullanıyorum.
-import {toggle } from "../redux/todos/todosSlice"; // toggle fonksiyonunu import ediyorum.
+import { useSelector, useDispatch } from "react-redux"; // tanımlamış olduğum bir state'e erişim sağlayabilmek için useSelector kullanıyorum.
+import { toggle } from "../redux/todos/todosSlice"; // toggle fonksiyonunu import ediyorum.
 
 function TodoList() {
   const dispatch = useDispatch(); // dispatch fonksiyonunu kullanabilmek için useDispatch kullanıyorum.
@@ -11,7 +11,11 @@ function TodoList() {
       {items.map((item) => (
         <li key={item.id} className={item.completed ? "completed" : ""}>
           <div className="view">
-            <input className="toggle" type="checkbox" />
+            <input
+              className="toggle"
+              type="checkbox"
+              onChange={() => dispatch(toggle({ id: item.id }))} /* onChange={() => dispatch(toggle())} => toggle fonksiyonunu dispatch ediyorum. */
+            />{" "}      
             <label>{item.title}</label>
             <button className="destroy"></button>
           </div>
