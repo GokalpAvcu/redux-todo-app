@@ -1,8 +1,10 @@
 import React from "react";
 
-import { useSelector } from "react-redux"; // tanımlamış olduğum bir state'e erişim sağlayabilmek için useSelector kullanıyorum.
+import { useSelector, useDispatch} from "react-redux"; // tanımlamış olduğum bir state'e erişim sağlayabilmek için useSelector kullanıyorum.
+import {toggle } from "../redux/todos/todosSlice"; // toggle fonksiyonunu import ediyorum.
 
 function TodoList() {
+  const dispatch = useDispatch(); // dispatch fonksiyonunu kullanabilmek için useDispatch kullanıyorum.
   const items = useSelector((state) => state.todos.items); // state.todos.items => state.todos.items'ı alıyorum. state.todos.items => todosSlice.reducer'da tanımladığımız initialState.items'ı alıyorum.
   return (
     <ul className="todo-list">
