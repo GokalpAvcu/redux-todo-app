@@ -14,6 +14,7 @@ function TodoList() {
             <input
               className="toggle"
               type="checkbox"
+              checked= {item.completed}
               onChange={() => dispatch(toggle({ id: item.id }))} /* onChange={() => dispatch(toggle())} => toggle fonksiyonunu dispatch ediyorum. */
             />{" "}      
             <label>{item.title}</label>
