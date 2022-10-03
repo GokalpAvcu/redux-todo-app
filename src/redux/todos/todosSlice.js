@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const todosSlice = createSlice({
   name: "todos",
   initialState: {
+    dafd: "asdasd",
     items: [
       {
         id: "1",
