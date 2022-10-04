@@ -6,6 +6,13 @@ import { toggle,destroy } from "../redux/todos/todosSlice"; // toggle fonksiyonu
 function TodoList() {
   const dispatch = useDispatch(); // dispatch fonksiyonunu kullanabilmek için useDispatch kullanıyorum.
   const items = useSelector((state) => state.todos.items); // state.todos.items => state.todos.items'ı alıyorum. state.todos.items => todosSlice.reducer'da tanımladığımız initialState.items'ı alıyorum.
+
+  const handleDestroy = (id) => {
+    if(window.confirm("Are you sure?")){
+      dispatch(destroy(id)); // dispatch ile destroy fonksiyonunu çağırıyorum.
+    }
+  }
+
   return (
     <ul className="todo-list">
       {items.map((item) => (
@@ -16,9 +23,9 @@ function TodoList() {
               type="checkbox"
               checked= {item.completed}
               onChange={() => dispatch(toggle({ id: item.id }))} /* onChange={() => dispatch(toggle())} => toggle fonksiyonunu dispatch ediyorum. */
-            />{" "}      
+            />     
             <label>{item.title}</label>
-            <button className="destroy" onClick={() => dispatch(destroy(item.id))}></button>
+            <button className="destroy" onClick={() => handleDestroy(item.id)}></button>
           </div>
         </li>
       ))}

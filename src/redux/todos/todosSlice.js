@@ -29,7 +29,8 @@ export const todosSlice = createSlice({
     },
     destroy: (state,action) => {
       const {id} = action.payload // action.payload => src\components\TodoList.js'de tanımladığımız destroy(item.id)'in item.id kısmını alıyorum.
-      state.items = state.items.filter((item) => item.id !== id); // item.id !== id => item.id'yi id ile karşılaştırıyorum. eğer item.id id'den farklı ise item'ı döndürüyorum.
+      const filtered = state.items.filter((item) => item.id !== id); // item.id !== id => item.id'yi id ile karşılaştırıyorum. eğer item.id id'ye eşit değilse item'ı döndürüyorum.
+      state.items = filtered; // state.items'i filtered ile güncelliyorum.
     },
   },
 });
