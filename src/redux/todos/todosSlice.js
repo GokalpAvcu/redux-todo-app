@@ -4,7 +4,6 @@ import { createSlice } from "@reduxjs/toolkit";
 export const todosSlice = createSlice({
   name: "todos",
   initialState: {
-    dafd: "asdasd",
     items: [
       {
         id: "1",
@@ -32,8 +31,11 @@ export const todosSlice = createSlice({
       const filtered = state.items.filter((item) => item.id !== id); // item.id !== id => item.id'yi id ile karşılaştırıyorum. eğer item.id id'ye eşit değilse item'ı döndürüyorum.
       state.items = filtered; // state.items'i filtered ile güncelliyorum.
     },
+    changeActiveFilter: (state,action) => {
+      state.activeFilter = action.payload // action.payload => src\components\ContentFooter.js'de tanımladığımız changeActiveFilter(filter)'in filter kısmını alıyorum.
+    }
   },
 });
 
-export const {addTodo, toggle, destroy} = todosSlice.actions; 
+export const {addTodo, toggle, destroy, changeActiveFilter} = todosSlice.actions; 
 export default todosSlice.reducer; // reducer'ı dışarı aktardık çünkü bunu store'da import edip reducer field'ına vermemiz gerekiyor.
