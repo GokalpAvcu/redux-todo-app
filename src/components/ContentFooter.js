@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
+import { changeActiveFilter } from "../redux/todos/todosSlice";
 
 function ContentFooter() {
   const items = useSelector((state) => state.todos.items); // state.todos.items => src\redux\todos\todosSlice.js'de tanımladığımız initialState'in items kısmını alıyorum.
@@ -15,7 +16,11 @@ function ContentFooter() {
 
       <ul className="filters">
         <li>
-          <a href="#/" className={activeFilter === "all" ? "selected" : ""}>
+          <a
+            href="#/"
+            className={activeFilter === "all" ? "selected" : ""}
+            onClick={() => changeActiveFilter}
+          >
             All
           </a>
         </li>
