@@ -36,8 +36,13 @@ export const todosSlice = createSlice({
       console.log("asd");
       state.activeFilter = action.payload; // action.payload => src\components\ContentFooter.js'de tanımladığımız changeActiveFilter(filter)'in filter kısmını alıyorum.
     },
+    clearCompleted: (state) => {
+      const filtered = state.items.filter((item) => item.completed === false); // item.completed === false => item.completed'ı false ile karşılaştırıyorum. eğer item.completed false ise item'ı döndürüyorum.
+      state.items = filtered; // state.items'i filtered ile güncelliyorum.
+     
+    }
   },
 });
 
-export const {addTodo, toggle, destroy, changeActiveFilter} = todosSlice.actions; 
+export const {addTodo, toggle, destroy, changeActiveFilter, clearCompleted} = todosSlice.actions; 
 export default todosSlice.reducer; // reducer'ı dışarı aktardık çünkü bunu store'da import edip reducer field'ına vermemiz gerekiyor.
