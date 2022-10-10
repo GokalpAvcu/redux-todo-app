@@ -28,14 +28,14 @@ function ContentFooter() {
         </li>
         <li>
           <a href="#/" className={activeFilter === "all" ? "selected" : ""} 
-           onClick={() => changeActiveFilter("active")}
+           onClick={() => dispatch(changeActiveFilter("active"))}
           >
             Active
           </a>
         </li>
         <li>
           <a href="#/" className={activeFilter === "all" ? "selected" : ""}
-           onClick={() => changeActiveFilter("all")}
+           onClick={() => dispatch(changeActiveFilter("all"))}
           >
             Completed
           </a>
