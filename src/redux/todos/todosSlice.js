@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {changeActiveFilter}from '../redux/todos/todosSlice.js';
+
 
 
 export const todosSlice = createSlice({
@@ -33,8 +33,9 @@ export const todosSlice = createSlice({
       state.items = filtered; // state.items'i filtered ile güncelliyorum.
     },
     changeActiveFilter: (state,action) => {
-      state.activeFilter = action.payload // action.payload => src\components\ContentFooter.js'de tanımladığımız changeActiveFilter(filter)'in filter kısmını alıyorum.
-    }
+      console.log("asd");
+      state.activeFilter = action.payload; // action.payload => src\components\ContentFooter.js'de tanımladığımız changeActiveFilter(filter)'in filter kısmını alıyorum.
+    },
   },
 });
 
